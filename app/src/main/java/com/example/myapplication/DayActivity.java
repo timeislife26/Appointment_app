@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +17,8 @@ import java.util.List;
 
 public class DayActivity extends AppCompatActivity implements MyRecyclerViewAdapter2.ItemClickListener {
 
+    int month = 0;
+    int day = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +27,18 @@ public class DayActivity extends AppCompatActivity implements MyRecyclerViewAdap
         List<String> apTimes = new ArrayList<>();
         List<Boolean> dData = new ArrayList<>();
         List<Integer> takenPos = new ArrayList<>();
-        int month = 0;
-        int day = 0;
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            Intent navIntent = null;
+            if (item.getItemId() == R.id.navHome) {
+                navIntent = new Intent(DayActivity.this, Homepage.class);
+                startActivity(navIntent);
+            }
+            else
+                finish();
+            return true;
+        });
         if (extras != null) {
             month = extras.getInt("month");
             day = extras.getInt("day");
@@ -59,6 +74,10 @@ public class DayActivity extends AppCompatActivity implements MyRecyclerViewAdap
 
     @Override
     public void onItemClick(View view, int position) {
-
+        Intent send = new Intent(DayActivity.this, MakeBooking.class);
+        send.putExtra("month", month);
+        send.putExtra("day", day);
+        send.putExtra("slot", position);
+        startActivity(send);
     }
 }

@@ -12,8 +12,8 @@ import java.util.HashMap;
 
 public class DbHandler extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
-    private static final String DB_NAME = "appointments";
-    private static final String TABLE_Users = "userdetails";
+    private static final String DB_NAME = "R00221324";
+    private static final String TABLE_Users = "appointments";
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_Month = "month";
@@ -42,7 +42,7 @@ public class DbHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void insertUserDetails(String name, String month, String day, int slot){
+    void insertUserDetails(String name, String month, String day, String slot){
         //Get the Data Repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
         //Create a new map of values, where column names are the keys

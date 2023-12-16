@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,6 +42,17 @@ public class GridActivity extends AppCompatActivity implements MyRecyclerViewAda
         Button nextBtn = findViewById(R.id.nextBtn);
         Button prevBtn = findViewById(R.id.prevBtn);
         createRecyclerView(mData);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            Intent navIntent = null;
+            if (item.getItemId() == R.id.navHome) {
+                navIntent = new Intent(GridActivity.this, Homepage.class);
+                startActivity(navIntent);
+            }
+            else
+                finish();
+            return true;
+        });
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +108,6 @@ public class GridActivity extends AppCompatActivity implements MyRecyclerViewAda
         Intent send = new Intent(GridActivity.this, DayActivity.class);
         send.putExtra("month", month);
         send.putExtra("day", position);
-        Toast.makeText(getApplicationContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
         startActivity(send);
 
     }
