@@ -18,7 +18,7 @@ import java.util.ListIterator;
 
 public class Month1 extends Fragment implements MyRecyclerViewAdapter.ItemClickListener {
     View view;
-    List<Integer> mdata = new ArrayList<>();
+    List<Integer> mData = new ArrayList<>();
 
 
     public Month1() {
@@ -33,16 +33,6 @@ public class Month1 extends Fragment implements MyRecyclerViewAdapter.ItemClickL
         return view;
     }
 
-    @Override
-    public void OnViewCreated(@NonNull View view, @Nullable Bundle savedInstance){
-        super.onViewCreated(view, savedInstance);
-
-        RecyclerView recyclerView = view.findViewById(R.id.rcJan);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        MyRecyclerViewAdapter myRecyclerViewAdapter = new MyRecyclerViewAdapter(mdata, this.getContext());
-        myRecyclerViewAdapter.setClickListener(this);
-        recyclerView.setAdapter(myRecyclerViewAdapter);
-    }
 
     @Override
     public void onItemClick(View view, int position) {

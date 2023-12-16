@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,13 +29,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @NonNull
     @Override
     public MyRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflate.inflate(R.layout.month_view, parent, false );
+        View view = mInflate.inflate(R.layout.month_view2, parent, false );
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyRecyclerViewAdapter.ViewHolder holder, int position) {
         int date = mData.get(position);
+        holder.dateTv.setText(String.valueOf(date));
     }
 
 
@@ -44,11 +46,12 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-
+        TextView dateTv;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
-
+            dateTv = itemView.findViewById(R.id.dateTv);
+            itemView.setOnClickListener(this);
         }
 
         @Override
@@ -61,7 +64,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         this.mClickListener = itemClickListener;
     }
     public interface ItemClickListener {
-        void OnViewCreated(@NonNull View view, @Nullable Bundle savedInstance);
 
         void onItemClick(View view, int position);
     }
