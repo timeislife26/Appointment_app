@@ -23,5 +23,12 @@ public class Homepage extends AppCompatActivity {
                 startActivity(send);
             }
         });
+        showAppointmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent send = new Intent(Homepage.this, ShowNames.class);
+                startActivity(send);
+            }
+        });
     }
 }

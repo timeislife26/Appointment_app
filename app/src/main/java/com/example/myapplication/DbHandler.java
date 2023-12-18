@@ -12,8 +12,8 @@ import java.util.HashMap;
 
 public class DbHandler extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
-    private static final String DB_NAME = "R00221324";
-    private static final String TABLE_Users = "appointments";
+    private static final String DB_NAME = "5645156";
+    private static final String TABLE_Users = "Testing";
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_Month = "month";
@@ -30,9 +30,10 @@ public class DbHandler extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT,"
                 + KEY_Month+ " TEXT,"
                 + KEY_Day + " TEXT,"
-                + KEY_slot +  ")";
+                + KEY_slot + " TEXT" + ")";
         db.execSQL(CREATE_TABLE);
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
@@ -59,7 +60,7 @@ public class DbHandler extends SQLiteOpenHelper {
     public ArrayList<HashMap<String, String>> GetUsers(){
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<HashMap<String, String>> userList = new ArrayList<>();
-        String query = "SELECT name, month, day, slot FROM "+ TABLE_Users;
+        String query = "SELECT name, day, month, slot FROM "+ TABLE_Users;
         Cursor cursor = db.rawQuery(query,null);
         while (cursor.moveToNext()){
             HashMap<String,String> user = new HashMap<>();

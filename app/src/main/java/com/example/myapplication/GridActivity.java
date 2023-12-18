@@ -110,6 +110,7 @@ public class GridActivity extends AppCompatActivity implements MyRecyclerViewAda
         send.putExtra("day", position);
         startActivity(send);
 
+
     }
 
     private void createRecyclerView(List<Integer> mData){

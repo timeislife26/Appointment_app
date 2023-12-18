@@ -43,9 +43,9 @@ public class MakeBooking extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = name.getText().toString()+"\n";
-                String dbMonth = String.valueOf(month)+"\n";
-                String dbDay = String.valueOf(day) + "\n";
+                String username = name.getText().toString();
+                String dbMonth = String.valueOf(month);
+                String dbDay = String.valueOf(day);
                 String dbSlot = String.valueOf(slot);
                 DbHandler dbHandler = new DbHandler(MakeBooking.this);
                 dbHandler.insertUserDetails(username,dbMonth,dbDay, dbSlot);
@@ -54,7 +54,6 @@ public class MakeBooking extends AppCompatActivity {
                 startActivity(send);
                 Toast.makeText(getApplicationContext(), "Booking has been made",Toast.LENGTH_SHORT).show();
                 //finishAffinity();
-
 
             }
         });
