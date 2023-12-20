@@ -34,7 +34,7 @@ public class MyRecyclerViewAdapter3 extends RecyclerView.Adapter<MyRecyclerViewA
     @NonNull
     @Override
     public MyRecyclerViewAdapter3.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflate.inflate(R.layout.month_view2, parent, false );
+        View view = mInflate.inflate(R.layout.bookings_rc, parent, false );
         return new ViewHolder(view);
     }
 
@@ -43,8 +43,8 @@ public class MyRecyclerViewAdapter3 extends RecyclerView.Adapter<MyRecyclerViewA
         String[] strMonth = mInflate.getContext().getResources().getStringArray(R.array.Months);
         String[] strSlots = mInflate.getContext().getResources().getStringArray(R.array.times);
         String date = days.get(position) + " " + strMonth[Integer.parseInt(months.get(position))];
-        holder.dateTv.setText(months.get(position));//date);
-        holder.slotTv.setText(slots.get(position));//strSlots[Integer.parseInt(slots.get(position))]);
+        holder.dateTv.setText(date);
+        holder.slotTv.setText(strSlots[Integer.parseInt(slots.get(position))]);
     }
 
 
